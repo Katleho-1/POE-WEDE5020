@@ -1,0 +1,50 @@
+body,h1,p{
+margin:0;
+padding:0;
+}
+
+
+body{
+font-family:Arial, sans-serif;
+color:black;
+line-height:1.6;
+background-color:gray;
+}
+
+footer{
+backround-color:black;
+color:white;
+text-align:center;
+padding:10px;
+position:fixed;
+bottom:0;
+width:100%;
+}
+
+
+#heading{color:white}
+
+.nav_bar{
+	list_style type:none;
+	backround-color:white;
+	display:inline-block;
+	text decoration:none;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 960px) {
+	nav ul li {
+		display: block;
+		margin: 10px 0;
+	}
+	
+	img {
+		width: 100%
+		height: auto;
+	}
+	
+	main {
+		margin: 10px;
+	}
+	
+}

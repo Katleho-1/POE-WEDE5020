@@ -1,0 +1,115 @@
+Console application abstract class
+
+import java.util.Scanner;
+
+public class EstateAgentApp {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the current estate agent name: ");
+        String agentName = scanner.nextLine();
+
+        System.out.print("Enter the property price: ");
+        double propertyPrice = scanner.nextDouble();
+
+        EstateAgentSales estateAgentSales = new EstateAgentSales(agentName, propertyPrice);
+        estateAgentSales.printPropertyReport();
+    }
+}
+
+abstract class EstateAgent implements iEstateAgent {
+    private String agentName;
+    private double propertyPrice;
+
+    public EstateAgent(String agentName, double propertyPrice) {
+        this.agentName = agentName;
+        this.propertyPrice = propertyPrice;
+    }
+
+    public String getAgentName() {
+        return agentName;
+    }
+
+    public double getPropertyPrice() {
+        return propertyPrice;
+    }
+
+    public double getAgentCommission() {
+        return propertyPrice * 0.20;
+    }
+}
+
+class EstateAgentSales extends EstateAgent {
+    public EstateAgentSales(String agentName, double propertyPrice) {
+        super(agentName, propertyPrice);
+    }
+
+    public void printPropertyReport() {
+        System.out.println("\nESTATE AGENT REPORT");
+        System.out.println("ESTATE AGENT NAME: " + getAgentName());
+        System.out.println("PROPERTY PRICE: R " + getPropertyPrice());
+        System.out.println("AGENT COMMISSION: R " + getAgentCommission());
+    }
+}
+
+interface iEstateAgent {
+    String getAgentName();
+
+    double getPropertyPrice();
+
+    double getAgentCommission();
+}
+
+
+You can create a new Java project, copy this code into separate files (EstateAgentApp.java, EstateAgent.java, EstateAgentSales.java, iEstateAgent.java), and then run the EstateAgentApp class. This will prompt you to enter the estate agent name and property price, and then print the estate agent commission report as shown in the sample output.
+
+
+
+
+
+
+
+
+
+
+public class CameraPriceComparison {
+    public static void main(String[] args) {
+        String[] manufacturers = {"CANON", "SONY", "NIKON"};
+        int[][] mirrorlessPrices = {{10500, 9500, 12000}};
+        int[][] dslrPrices = {{8500, 7200, 8000}};
+        
+        int greatestDifference = 0;
+        String manufacturerWithGreatestDiff = "";
+        
+        for (int i = 0; i < manufacturers.length; i++) {
+            int mirrorlessPrice = 0;
+            int dslrPrice = 0;
+            int totalDifference = 0;
+            
+            System.out.println("\nManufacturer: " + manufacturers[i]);
+            System.out.println("Camera\t\tMirrorless\tDSLR\tDifference");
+            
+            for (int j = 0; j < mirrorlessPrices[i].length; j++) {
+                mirrorlessPrice = mirrorlessPrices[i][j];
+                dslrPrice = dslrPrices[i][j];
+                totalDifference = mirrorlessPrice - dslrPrice;
+                
+                if (totalDifference >= 2500) {
+                    System.out.println(j+1 + "\t\t" + mirrorlessPrice + "\t\t" + dslrPrice + "\t" + totalDifference + " ***");
+                } else {
+                    System.out.println(j+1 + "\t\t" + mirrorlessPrice + "\t\t" + dslrPrice + "\t" + totalDifference);
+                }
+                
+                if (totalDifference > greatestDifference) {
+                    greatestDifference = totalDifference;
+                    manufacturerWithGreatestDiff = manufacturers[i];
+                }
+            }
+        }
+        
+        System.out.println("\nManufacturer with greatest cost difference: " + manufacturerWithGreatestDiff);
+    }
+}
+
+Java application two dimensional arrays
